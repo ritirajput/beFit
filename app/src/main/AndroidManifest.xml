@@ -16,6 +16,9 @@
             android:name=".register"
             android:exported="false" />
         <activity
+            android:name=".forgetPassword"
+            android:exported="false" />
+        <activity
             android:name=".ui.login.register"
             android:exported="false"
             android:label="@string/title_activity_register" />
