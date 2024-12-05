@@ -18,7 +18,7 @@ import androidx.core.view.WindowInsetsCompat;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-public class register extends AppCompatActivity {
+public class registration extends AppCompatActivity {
     EditText emailEditText, passwordEditText, confirmPasswordEditText;
     Button registerButton, loginLink;
 
@@ -27,17 +27,17 @@ public class register extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_registration);
         emailEditText = findViewById(R.id.emailRegister);
         passwordEditText = findViewById(R.id.passwordRegister);
         confirmPasswordEditText = findViewById(R.id.confirmPassword);
         registerButton = findViewById(R.id.registerbtn);
-        loginLink = findViewById(R.id.loginLink);
+        loginLink = findViewById(R.id.loginlink);
         mAuth = FirebaseAuth.getInstance();
         loginLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(register.this, login.class);
+                Intent intent = new Intent( registration.this, LoginActivity.class);
                 startActivity(intent);
                 finish();
             }
@@ -62,7 +62,7 @@ public class register extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser!= null) {
             //already logged in, start the main activity
-            Intent intent = new Intent(register.this, login.class);
+            Intent intent = new Intent(registration.this, LoginActivity.class);
             startActivity(intent);
             finish();
         }
@@ -75,7 +75,7 @@ public class register extends AppCompatActivity {
         String cPass = confirmPasswordEditText.getText().toString().trim();
 
         if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(cPass)) {
-            Toast.makeText(register.this,"All fields are required",Toast.LENGTH_SHORT).show();
+            Toast.makeText(registration.this,"All fields are required",Toast.LENGTH_SHORT).show();
             return;
         }
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
@@ -97,9 +97,9 @@ public class register extends AppCompatActivity {
         //if everything is fine, start the registration process
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this , task -> {
             if (task.isSuccessful()) {
-                Toast.makeText(register.this,"Registration Successful",Toast.LENGTH_SHORT).show();
+                Toast.makeText(registration.this,"Registration Successful",Toast.LENGTH_SHORT).show();
                 //start the main activity
-                Intent intent = new Intent(register.this, MainActivity.class);
+                Intent intent = new Intent(registration.this,LoginActivity.class);
                 startActivity(intent);
                 finish();
             } else{

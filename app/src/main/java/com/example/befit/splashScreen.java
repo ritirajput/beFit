@@ -20,7 +20,7 @@ public class splashScreen extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_splash_screen);
         new Handler().postDelayed(()->{
-            Intent intent = new Intent(splashScreen.this,login.class);
+            Intent intent = new Intent(splashScreen.this,LoginActivity.class);
             startActivity(intent);
             finish();
         },delay);

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -15,28 +16,38 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
 
-public class login extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     EditText emailEditText, passwordEditText;
     Button loginButton, registerLink;
-    FirebaseAuth mAuth;
 
+    TextView forgetpasstxt;
+    FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_login2);
         emailEditText = findViewById(R.id.emailLogin);
         passwordEditText = findViewById(R.id.passwordLogin);
         loginButton = findViewById(R.id.loginbtn);
-        registerLink = findViewById(R.id.registerLink);
+        registerLink = findViewById(R.id.register);
+        forgetpasstxt = findViewById(R.id.forgetpass);
         mAuth = FirebaseAuth.getInstance();
 
+        forgetpasstxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent =new Intent(LoginActivity.this,forgetPassword.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         registerLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(login.this, register.class);
+                Intent intent  = new Intent(LoginActivity.this, registration.class);
                 startActivity(intent);
                 finish();
             }
@@ -52,6 +63,7 @@ public class login extends AppCompatActivity {
     }
 
 
+
     private void loginUser() {
         String email = emailEditText.getText().toString().trim();
         String password = passwordEditText.getText().toString().trim();
@@ -65,14 +77,15 @@ public class login extends AppCompatActivity {
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, task -> {
                     if (task.isSuccessful()) {
-                        Intent intent = new Intent(login.this, Home.class);
+                        Intent intent = new Intent(LoginActivity.this, DietByStram.class);
                         startActivity(intent);
                         finish();
                     }else {
-                        Toast.makeText(login.this, "Authentication failed",
+                        Toast.makeText(LoginActivity.this, "Authentication failed",
                                 Toast.LENGTH_SHORT).show();
                     }
                 });
     }
+
 
 }

@@ -1,28 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@drawable/sec_background"
+    android:layout_width="match_parent"
     android:gravity="center"
-    tools:context=".login">
+    android:orientation="vertical"
+    android:background="@drawable/sec_background">
 
 
     <TextView
-
         android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_gravity="center"
-        android:text="Login page"
+        android:layout_height="wrap_content"
+        android:text="Register "
         android:textSize="30dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        />
 
     <EditText
-
-        android:id="@+id/emailLogin"
+        android:id="@+id/emailRegister"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:hint="Please Enter Email"
@@ -31,39 +29,37 @@
 
 
     <EditText
-        android:id="@+id/passwordLogin"
+        android:id="@+id/passwordRegister"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:hint="Password"
         android:inputType="textPassword"
         android:layout_margin="10dp"
         android:padding="10dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Forget Password"/>
-
-
+    <EditText
+        android:id="@+id/confirmPassword"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:hint="Confirm Password"
+        android:layout_margin="10dp"
+        android:padding="10dp"/>
 
     <Button
-        android:id="@+id/loginbtn"
+        android:id="@+id/registerbtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="Login"
-        android:textColor="@color/black"
-        android:backgroundTint="@color/white"
-        />
-
-    <Button
-        android:id="@+id/registerLink"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Dont have an account? Register"
+        android:text="Register"
         android:textColor="@color/black"
         android:backgroundTint="@color/white"/>
 
+    <Button
+        android:id="@+id/loginlink"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Already have an account? Login"
+        android:textColor="@color/black"
+        android:backgroundTint="@color/white"/>
 
 </LinearLayout>
